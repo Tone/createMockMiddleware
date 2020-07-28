@@ -1,5 +1,5 @@
 const express = require('express');
-const getMockMiddleware = require('./src/index');
+const getMockMiddleware = require('./index');
 var app = express();
 app.use(getMockMiddleware());
 

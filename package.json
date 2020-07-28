@@ -1,14 +1,16 @@
 {
-  "name": "create-mock-middleware",
-  "version": "0.0.5",
+  "name": "@tone/create-mock-middleware",
+  "version": "0.0.8",
   "description": "An express middleware that reads the umi mock",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
-    "test": "node testMock.js"
+    "test": "npm run build && node testMock.js",
+    "build": "babel src/index.js --out-file index.js",
+    "prepublishOnly": "if [ -f index.js ]; then echo \"check pass\" ; else echo \"index.js files are missing.\"; exit 1; fi"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/umijs/createMockMiddleware.git"
+    "url": "git+https://github.com/Tone/createMockMiddleware.git"
   },
   "keywords": [
     "umi",
@@ -19,26 +21,39 @@
   "author": "chenshuai2144",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/umijs/createMockMiddleware/issues"
+    "url": "https://github.com/Tone/createMockMiddleware/issues"
   },
-  "homepage": "https://github.com/umijs/createMockMiddleware#readme",
+  "homepage": "https://github.com/Tone/createMockMiddleware#readme",
   "dependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-modules-commonjs": "^ 7.10.4",
+    "@babel/register": "^ 7.10.4",
+    "@babel/runtime": "^ 7.10.4",
     "assert": "^1.4.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "body-parser": "^1.18.3",
     "chokidar": "^2.0.4",
     "glob": "^7.1.2",
     "mockjs": "^1.1.0",
-    "path-to-regexp": "^2.2.1",
-    "@babel/core": "7.0.0-beta.46",
-    "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.46",
-    "@babel/register": "7.0.0-beta.46",
-    "@babel/runtime": "7.0.0-beta.46",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-dynamic-import-node-sync": "^2.0.1"
+    "path-to-regexp": "^2.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
     "express": "^4.16.3",
     "moment": "^2.22.2",
     "url": "^0.11.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "8.0.0"
+          }
+        }
+      ]
+    ]
   }
 }
