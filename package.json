@@ -1,6 +1,6 @@
 {
   "name": "@tone/create-mock-middleware",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "An express middleware that reads the umi mock",
   "main": "index.js",
   "scripts": {

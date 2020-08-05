@@ -61,11 +61,16 @@ function getMockMiddleware(patterns = ['mock/**/*.js','src/pages/*/mock/**/*.js'
         )}`
       );
       ret = mockFiles.reduce((memo, mockFile) => {
-        memo = {
-          ...memo,
-          ...require(join(process.cwd(),mockFile)) // eslint-disable-line
-        };
-        return memo;
+        try {
+          memo = {
+            ...memo,
+            ...require(join(process.cwd(),mockFile)) // eslint-disable-line
+          };
+        }catch(e) {
+          console.error(e)
+        }finally{
+          return memo;
+        }
       }, {});
     
     return normalizeConfig(ret);
