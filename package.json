@@ -1,8 +1,11 @@
 {
-  "name": "@tone/create-mock-middleware",
-  "version": "0.0.9",
+  "name": "@tone./create-mock-middleware",
+  "version": "0.0.1",
   "description": "An express middleware that reads the umi mock",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "npm run build && node testMock.js",
     "build": "babel src/index.js --out-file index.js",
