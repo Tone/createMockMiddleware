@@ -6,7 +6,6 @@ const chokidar = require("chokidar");
 const pathToRegexp = require("path-to-regexp");
 const mockjs = require('mockjs')
 const debug = console.log;
-const register = require("@babel/register");
 
 const VALID_METHODS = ["get", "post", "put", "patch", "delete"];
 const BODY_PARSED_METHODS = ["post", "put", "patch"];
@@ -19,7 +18,7 @@ const BODY_PARSED_METHODS = ["post", "put", "patch"];
 function getMockMiddleware(patterns = ['mock/**/*.js','src/pages/*/mock/**/*.js']) {
   
   
-  register({
+  require("@babel/register")({
     plugins: [
       require.resolve("babel-plugin-add-module-exports"),
       require.resolve("@babel/plugin-transform-modules-commonjs"),
